@@ -25,34 +25,45 @@ public class MainActivity extends Activity {
         //Declaramos los objetos spinner.
         ciudades = (Spinner) findViewById(R.id.ciudadesSP);
         paises = (Spinner) findViewById(R.id.paisesSP);
+        ac = new ArrayList<String>();
 
         //Rellenamos nuestro primer spinner
         String array_paises[]=getResources().getStringArray(R.array.Paises);
         adap_paises = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,array_paises);
+        adap_ciudades = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item);
         paises.setAdapter(adap_paises);
 
-        paises.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        paises.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
                     case 0: //Ninguno
+                        adap_ciudades.clear();
                         break;
                     case 1: //España
-                        ac=(ArrayList<String>) Arrays.asList(getResources().getStringArray(R.array.ciudades_España));
+                        ac = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.ciudades_España)));
                         break;
                     case 2: //Francia
-                        ac=(ArrayList<String>) Arrays.asList(getResources().getStringArray(R.array.ciudades_Francia));
+                        ac = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.ciudades_Francia)));
                         break;
                     case 3: //Italia
-                        ac=(ArrayList<String>) Arrays.asList(getResources().getStringArray(R.array.ciudades_Italia));
+                        ac = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.ciudades_Italia)));
                         break;
                     case 4: //Alemania
-                        ac=(ArrayList<String>) Arrays.asList(getResources().getStringArray(R.array.ciudades_Alemania));
+                        ac = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.ciudades_Alemania)));
+                        break;
                 }
+                adap_ciudades.clear();
                 adap_ciudades.addAll(ac);
                 ciudades.setAdapter(adap_ciudades);
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
+
     }
 
     @Override
