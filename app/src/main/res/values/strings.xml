@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PMDM-EjerPaisesCiudades</string>
+    <string name="hello_world">Listas Dinámicas</string>
+    <string name="action_settings">Settings</string>
+    <string name="pais">Paises</string>
+    <string name="ciudad">Ciudades</string>
+</resources>
